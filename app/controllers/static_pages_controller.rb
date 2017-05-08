@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :is_logged_in, only: [:contact]
   def home
   end
 
