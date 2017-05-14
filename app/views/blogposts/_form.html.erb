@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6 offset-md-3">
+    <%= form_for(blogpost, :url => user_blogposts_path(@user)) do |f| %>
+      <% if blogpost.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(blogpost.errors.count, "error") %> prohibited this blogpost from being saved:</h2>
+
+          <ul>
+          <% blogpost.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Publish", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

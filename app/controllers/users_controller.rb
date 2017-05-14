@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :is_logged_in, only: [:edit, :update, :destroy]
+  # before_action :is_logged_in, only: [:index, :show, :new, :edit, :update, :destroy]
+  before_action :is_logged_in, except: [:signup, :create]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -18,6 +20,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # Get /signup
+  def signup
+    @user = User.new
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -30,7 +37,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -43,7 +50,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
       if @user.update(user_params)
-        redirect_to @user, notice: 'User was successfully updated.'
+        redirect_to @user
       else
         render :edit
       end
@@ -54,7 +61,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end

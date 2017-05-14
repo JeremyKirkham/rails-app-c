@@ -1,0 +1,6 @@
+<h1>Blogposts!</h1>
+<% @blogposts.each do |blogpost| %>
+  <h2><%= blogpost.title %></h2>
+  <h3>Author: <%= "#{blogpost.user.first_name} #{blogpost.user.last_name}" %></h3>
+<% end %>
+<%= link_to('New Blogpost', new_user_blogpost_path(@user)) %>
