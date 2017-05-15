@@ -1,6 +1,6 @@
 deployment:
   staging:
-    branch: my-testing-branch
+    branch: master
     commands:
       - git push git@heroku.com:guarded-garden-91421.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rails db:migrate --app guarded-garden-91421
