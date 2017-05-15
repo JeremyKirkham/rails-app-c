@@ -1,12 +1,6 @@
 machine:
   ruby:
     version: 2.3.1
-  services:
-    - redis
-
-test:
-  override:
-    - rake test
 
 deployment:
   staging:
