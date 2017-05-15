@@ -1,13 +1,14 @@
 require 'test_helper'
 
 class BlogpostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get blogposts_new_url
-    assert_response :success
+  setup do
+    @user = users(:one)
+    @blogpost = blogposts(:one)
+    log_in_as(@user)
   end
 
-  test "should get create" do
-    get blogposts_create_url
+  test "should get new" do
+    get new_user_blogpost_url(@user)
     assert_response :success
   end
 
