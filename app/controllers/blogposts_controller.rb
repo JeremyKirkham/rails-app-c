@@ -1,6 +1,8 @@
 class BlogpostsController < ApplicationController
+  before_action :is_logged_in
+
   def new
-    @user = current_user
+    @user = params[:user_id]
     @blogpost = Blogpost.new
   end
 

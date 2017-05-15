@@ -1,0 +1,10 @@
+machine:
+  ruby:
+    version: 2.3.1
+
+deployment:
+  staging:
+    # branch: master
+    commands:
+      - git push git@heroku.com:guarded-garden-91421.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app guarded-garden-91421
