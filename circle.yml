@@ -1,0 +1,5 @@
+deployment:
+  staging:
+    branch: my-testing-branch
+    heroku:
+      appname: guarded-garden-91421
